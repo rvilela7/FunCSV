@@ -1,0 +1,6 @@
+#More options in Collection Generics, IEnumerable try
+
+#Linq Sum by Key !? easily
+#Smart and Lame Way
+
+#Open normally a file
