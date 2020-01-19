@@ -5,6 +5,8 @@ Read a CSV file, Process, Result output
 #Order, Batch, Price
 
 -> input
+dotnet run Program.cs ./file.csv
+-> CSV
 #00132, B10, 100
 #00343, B12, 200
 #00120, B10, 200
