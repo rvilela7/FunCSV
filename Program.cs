@@ -26,7 +26,6 @@ namespace FunCSV
                 {
                     // foreach (var fs in file.)
                     // {
-
                     // }
                 }
 
@@ -43,16 +42,18 @@ namespace FunCSV
                 dicBatches.Add(new KeyValuePair<string, int>("B12", 200));
                 dicBatches.Add(new KeyValuePair<string, int>("B10", 200));
 
-                var c = dicBatches.GroupBy(m => m.Key);
+                var dummyData = dicBatches.GroupBy(m => m.Key).ToList();
 
+                List<KeyValuePair<string, int>> dicResult = new List<KeyValuePair<string, int>>();
+                dicBatches.GroupBy(m => m.Key).ToList().ForEach(v => dicResult.Add(new KeyValuePair<string, int>(v.Key, v.Sum(r => r.Value))));
+
+                Console.WriteLine("End");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return;
             }
-
-
         }
     }
 }
