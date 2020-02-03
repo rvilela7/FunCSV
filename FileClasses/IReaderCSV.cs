@@ -1,8 +1,11 @@
+using System.Collections.Generic;
+
 namespace FileClasses
 {
     public interface IReaderCSV
     {
-        void OpenFile(string fileName);
-        string ReadCSV();
+        string GetFileName { get; }
+        bool IsFile();
+        IEnumerable<KeyValuePair<string, int>> ReadCSV();
     }
 }

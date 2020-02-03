@@ -1,22 +1,36 @@
 namespace FileClasses
 {
+    using System.Collections.Generic;
     using System.IO;
-    using Microsoft.VisualBasic; //Name Space specific
+    using Microsoft.VisualBasic.FileIO;
 
     public class ReaderCSV : IReaderCSV
     {
-        public void OpenFile(string fileName)
-        {
+        private readonly string _fileName;
 
-            if (!File.Exists(fileName)) //Default will not fire InvalididOperatorException
-            {
-                throw new FileNotFoundException();
-            }
+        public ReaderCSV(string fileName)
+        {
+            _fileName = fileName;
         }
 
-        public string ReadCSV()
+        public string GetFileName => _fileName;
+        public bool IsFile() => File.Exists(_fileName);
+
+        public IEnumerable<KeyValuePair<string, int>> ReadCSV()
         {
-            //FileStream Way
+            using (TextFieldParser parser = new TextFieldParser(_fileName))
+            {
+                parser.TextFieldType = FieldType.Delimited;
+                parser.SetDelimiters(",");
+                while (!parser.EndOfData)
+                {
+                    string[] fields = parser.ReadFields();
+                    foreach (string field in fields)
+                    {
+
+                    }
+                }
+            }
 
 
             // #00132, B10, 100
