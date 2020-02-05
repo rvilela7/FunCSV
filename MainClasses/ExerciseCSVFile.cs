@@ -4,10 +4,22 @@ namespace MainClasses
     using System.Collections.Generic;
     using System.Linq;
     using FileClasses;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
     public class ExerciseCSVFile
     {
         public void RunExercise(string fileName)
         {
+
+            var collection = new ServiceCollection();
+            collection.AddScoped<IReaderCSV, ReaderCSV>();
+            // ...
+            // Add other services
+            // ...
+            var serviceProvider = collection.BuildServiceProvider();
+            var service = serviceProvider.GetService<IReaderCSV>();
+            //service.DoSomething();
+
             Console.WriteLine("* Get File Syntax");
             //Won't work due to dict only accepting a unique key
             //Dictionary<string, int> dicBatches = new Dictionary<string, int>();

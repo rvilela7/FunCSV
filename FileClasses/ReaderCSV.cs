@@ -6,19 +6,14 @@ namespace FileClasses
 
     public class ReaderCSV : IReaderCSV
     {
-        private readonly string _fileName;
+        public string FileName { get; set; }
 
-        public ReaderCSV(string fileName)
-        {
-            _fileName = fileName;
-        }
-
-        public string GetFileName => _fileName;
-        public bool IsFile() => File.Exists(_fileName);
+        
+        public bool IsFile() => File.Exists(FileName);
 
         public IEnumerable<KeyValuePair<string, int>> ReadCSV()
         {
-            using (TextFieldParser parser = new TextFieldParser(_fileName))
+            using (TextFieldParser parser = new TextFieldParser(FileName))
             {
                 parser.TextFieldType = FieldType.Delimited;
                 parser.SetDelimiters(",");
