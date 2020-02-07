@@ -4,7 +4,7 @@ namespace FileClasses
 {
     public interface IReaderCSV
     {
-        bool IsFile();
-        IEnumerable<KeyValuePair<string, int>> ReadCSV();
+        bool SetFile(string filename);
+        List<KeyValuePair<string, int>> ReadCSV();
     }
 }

@@ -8,18 +8,18 @@
         {
             try
             {
-                Console.WriteLine("Start");
+                Console.WriteLine("-> Start");
                 
                 string fileName = args.FirstOrDefault();
                 
                 MainClasses.ExerciseCSVFile exercise = new MainClasses.ExerciseCSVFile();
                 exercise.RunExercise(fileName);
 
-                Console.WriteLine("End");
+                Console.WriteLine("-> End");
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"Program Exception: {ex.Message}");
                 return;
             }
         }
